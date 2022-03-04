@@ -1,0 +1,34 @@
+ncr-action-list: 0.1
+import:
+  log: com.ncr.tx.apitoolkit.actions.common.LogParametersAction
+  copy: com.ncr.tx.apitoolkit.actions.common.CopyAction
+   
+lists:      
+- list: createAccount
+  steps:
+  - action: log
+    parameters:
+      logAll: true
+  - action: copy
+    parameters:
+       set.ext.response.body.id: 1234
+       copyfield.ext.request.body.type: ext.response.body.type
+       copyfield.ext.request.body.label: ext.response.body.label
+       set.ext.response.body.balance: 100
+       set.ext.response.status.code: 201
+       set.ext.response.headers.Location: "/v1/accounts/1234"
+       
+- list: getBalance
+  steps:
+  - action: log
+    parameters:
+      logAll: true
+  - action: copy
+    parameters:
+      set.ext.response.status.code: 200
+      copyfield.ext.request.pathvariable.id: ext.response.body.id
+      set.ext.response.body.type: 'checking'
+      set.ext.response.body.label: 'my checking account'
+      set.ext.response.body.balance: 600000
+       
+      

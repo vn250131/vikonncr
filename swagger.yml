@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  version: 1.0-SNAPSHOT-oas3
+  title: ?lesson 2?
+servers:
+  - url: /v1
+paths:
+  /accounts:
+    post:
+      description: Create Account
+      operationId: createAccount
+      requestBody:
+         content:
+            application/json:
+               schema:
+                  type: object
+         required: true
+      responses:
+         '201':
+            description: response
+            content:
+               application/json:
+                  schema:
+                     type: object
+                     
+                     
+
+  /accounts/{id}: 
+    get:
+      description: Get balance.
+      operationId: getBalance
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: 
+             type: integer
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                type: object
